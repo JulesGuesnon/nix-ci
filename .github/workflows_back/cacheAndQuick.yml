@@ -1,0 +1,35 @@
+# name: Cache and quick
+#
+# on:
+#   push:
+#
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+#
+#       - name: Record global start
+#         run: |
+#           echo "GLOBAL_START=$(date +%s)" >> $GITHUB_ENV
+#
+#       - name: Install nix
+#         uses: nixbuild/nix-quick-install-action@v31
+#
+#       - name: Run the Magic Nix Cache
+#         uses: DeterminateSystems/magic-nix-cache-action@main
+#
+#       - name: Inject env
+#         shell: bash
+#         run: |
+#           time nix develop -c env | grep -E 'JAVA|PYTHON|NODE|PATH' >> $GITHUB_ENV
+#
+#       - name: Print env
+#         shell: bash
+#         run: |
+#           global_end=$(date +%s)
+#
+#           total=$((global_end - GLOBAL_START))
+#
+#           echo "Total time from before install to after export: ${total} seconds"

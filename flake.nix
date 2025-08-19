@@ -2,7 +2,7 @@
   description = "Minimal dev terminal flake";
 
   inputs = {
-    nixpkgs.url = "ithub:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
   };
 
   outputs = { self, nixpkgs }:
@@ -25,7 +25,7 @@
           buildInputs = [
             pkgs.git
             pkgs.gh
-            pkgs.node_22
+            pkgs.nodejs_22
             pkgs.yarn-berry
             pkgs.python312
             pkgs.uv

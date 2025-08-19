@@ -1,0 +1,7 @@
+name: "Prune uv"
+description: "Prune uv cache"
+runs:
+  using: "node20"
+  main: "empty.mjs"
+  post: "post.mjs"
+  post-if: "success()"
